@@ -18,17 +18,42 @@ Two projection methods run in parallel and can be compared head-to-head:
 | **CCA** — Seurat Canonical Correlation Analysis | R | `run_cca_pipeline.sh` |
 | **scVI/scANVI** — variational autoencoder | Python | `run_scvi_pipeline.sh` |
 
+This demo is designed around **leave-one-out (LOO) cross-validation**, where one patient is held out as query and the remaining patients form the reference for direct method benchmarking.
+
 ---
 
 ## Getting Started
 
 This is a full analysis pipeline, not a quick toy demo. A complete run (CCA + scVI + LOO benchmarking) typically takes multiple hours (around 4-5 hours on Apple Silicon for all patients).
+The core demonstration objective is LOO benchmarking of CCA vs scVI/scANVI with one patient left out per fold.
 
-For fastest inspection of outputs, start with the precomputed examples:
+Start from a clean machine with the following sequence:
+
+```bash
+# 1) Clone
+git clone https://github.com/zhuy16/scRNA-seq_reference-projection.git
+cd scRNA-seq_reference-projection
+
+# 2) Create Python/R runtime environment
+conda env create -f environment.yml
+conda activate scrnaseq
+
+# 3) Install pinned R packages (first run only)
+Rscript setup_r_env.R
+
+# 4) Run pipelines
+conda run -n scrnaseq bash run_cca_pipeline.sh
+conda run -n scrnaseq bash run_scvi_pipeline.sh
+
+# 5) Optional: run leave-one-out benchmark (~4-5 h)
+conda run -n scrnaseq bash run_loo_benchmark.sh
+```
+
+For fastest inspection without running everything, start with the precomputed examples:
 - [notebooks/executed_example_notebooks/benchmark_celltype.ipynb](notebooks/executed_example_notebooks/benchmark_celltype.ipynb)
 - [notebooks/executed_example_notebooks/loo_su001_scvi/02_project_query.ipynb](notebooks/executed_example_notebooks/loo_su001_scvi/02_project_query.ipynb)
 
-For step-by-step setup and execution details, use:
+For detailed notebook-by-notebook execution and parameter guidance, use:
 - [docs/pipeline-reference.md](docs/pipeline-reference.md)
 - [docs/configuration.md](docs/configuration.md)
 
@@ -104,6 +129,10 @@ Leave-one-out benchmark across 11 patients. Each patient held out as query; rema
 | CD8\_ex F1 | 51.2 ± 42.5% | **68.3 ± 20.9%** |
 
 Overall accuracy is equivalent. The key difference is **exhausted CD8 recovery**: scANVI achieves higher recall (88% vs 56%) and F1 (68% vs 51%) with much lower patient-to-patient variance — the critical subtype for TIL selection. CCA is a fast, GPU-free baseline suited for development and interpretability.
+
+![LOO Benchmark Boxplots](notebooks/benchmarking/loo_boxplots.png)
+
+LOO metric distribution across patients for CCA vs scANVI.
 
 ---
 
