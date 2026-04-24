@@ -1,8 +1,15 @@
 # scRNA-seq Reference Projection Pipeline
 
+![Python](https://img.shields.io/badge/python-3.9-blue)
+![R](https://img.shields.io/badge/R-4.x-blue)
+![Docker](https://img.shields.io/badge/docker-ready-blue)
+
 A reproducible, [Papermill](https://papermill.readthedocs.io)-parameterised pipeline for **tumor-infiltrating lymphocyte (TIL)** analysis with a primary focus on **cell type annotation**: QC → reference projection → clonotype × exhaustion integration.
 
+Accurate identification of exhausted CD8+ T cells from TIL single-cell data is a critical bottleneck in TCR-based cell therapy development; this pipeline provides a reproducible, benchmarked framework for reference-based annotation with direct application to clinical program prioritization.
+
 NB04 and NB05 are currently under development as **placeholder downstream prediction modules** (TCR reactivity selection and PPV validation) and are not the main focus of this repository.
+Labelled reactivity training data from wet lab validation experiments is required to complete this module.
 
 Two projection methods run in parallel and can be compared head-to-head:
 
@@ -39,6 +46,12 @@ Expected outcome: projected query labels and benchmark plots are available for r
 
 ---
 
+## Clinical Context
+
+In TCR-T and related adoptive cell therapy programs, selecting the right T cell clones is limited by how accurately we can characterize exhausted and antigen-experienced CD8+ states in tumor samples. This repository focuses on that upstream bottleneck: robust, reproducible annotation and benchmarked projection across patients, so downstream wet-lab prioritization starts from higher-confidence cell-state calls.
+
+---
+
 ## Pipeline Overview
 
 ```mermaid
@@ -56,7 +69,7 @@ flowchart TD
     NB04 --> NB05[NB05 PPV validation placeholder]
 ```
 
-NB03 has parallel R (Seurat `AddModuleScore`) and Python (scanpy `sc.tl.score_genes`) implementations — both produce identical output schemas. NB04–05 are placeholder implementations; the optimal ML approach is under benchmarking pending labelled training data. See [docs/pipeline-reference.md](docs/pipeline-reference.md) for per-step details.
+NB03 has parallel R (Seurat `AddModuleScore`) and Python (scanpy `sc.tl.score_genes`) implementations — both produce identical output schemas. NB04–05 are placeholder implementations; completion requires labelled reactivity data from wet-lab validation experiments. See [docs/pipeline-reference.md](docs/pipeline-reference.md) for per-step details.
 
 ---
 
