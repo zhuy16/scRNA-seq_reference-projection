@@ -1,6 +1,8 @@
 # scRNA-seq Reference Projection Pipeline
 
-A reproducible, [Papermill](https://papermill.readthedocs.io)-parameterised pipeline for **tumor-infiltrating lymphocyte (TIL)** analysis: QC → reference projection → clonotype × exhaustion integration → TCR candidate selection.
+A reproducible, [Papermill](https://papermill.readthedocs.io)-parameterised pipeline for **tumor-infiltrating lymphocyte (TIL)** analysis with a primary focus on **cell type annotation**: QC → reference projection → clonotype × exhaustion integration.
+
+NB04 and NB05 are currently under development as **placeholder downstream prediction modules** (TCR reactivity selection and PPV validation) and are not the main focus of this repository.
 
 Two projection methods run in parallel and can be compared head-to-head:
 
@@ -53,7 +55,6 @@ NB03 has parallel R (Seurat `AddModuleScore`) and Python (scanpy `sc.tl.score_ge
 │
 ├── benchmarking/
 │   ├── benchmark_celltype.ipynb    # CCA vs scVI/scANVI accuracy
-│   ├── benchmark_tcr_ml.ipynb     # ML method comparison (placeholder)
 │   └── loo_*.png / loo_*.csv      # LOO results (committed)
 │
 ├── data/exhaustion_gene_panel.txt  # 18-gene panel (→ docs/exhaustion-gene-panel.md)
@@ -80,16 +81,14 @@ Overall accuracy is equivalent. The key difference is **exhausted CD8 recovery**
 
 ## Example Notebooks
 
-Selected executed notebooks with full outputs are in `notebooks/examples/` to illustrate code style, logic flow, and visualisations without running the full pipeline:
+Selected executed notebooks with full outputs are committed to illustrate code style, logic flow, and visualisations without running the full pipeline:
 
 | Notebook | What to look for |
 |----------|-----------------|
 | [explore_yost2019_bcc](notebooks/examples/explore_yost2019_bcc.ipynb) | Dataset structure, cell-type composition, TCR overlap overview |
-| [cca/02_reference_projection](notebooks/examples/cca_02_reference_projection.ipynb) | UMAP label transfer, prediction score distributions |
-| [cca/03_clonotype_exhaustion](notebooks/examples/cca_03_clonotype_exhaustion.ipynb) | Exhaustion module scoring, clonotype ranking plots |
-| [scvi/02_project_query](notebooks/examples/scvi_02_project_query.ipynb) | SCANVI latent space, soft probability heatmap |
-| [scvi/03_clonotype_exhaustion](notebooks/examples/scvi_03_clonotype_exhaustion.ipynb) | Python equivalent of exhaustion scoring |
 | [benchmark_celltype](notebooks/examples/benchmark_celltype.ipynb) | CCA vs scANVI accuracy, per-patient LOO results, confusion matrices |
+| [loo_su001_cca/02_reference_projection](notebooks/executed/loo_su001_cca/02_reference_projection.ipynb) | LOO reference projection behavior with held-out patient |
+| [loo_su001_scvi/02_project_query](notebooks/executed/loo_su001_scvi/02_project_query.ipynb) | LOO SCANVI inference on held-out patient |
 
 ---
 

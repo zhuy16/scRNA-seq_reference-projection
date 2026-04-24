@@ -29,10 +29,26 @@ models/scanvi_reference/
 models/scanvi_reference_su*/
 
 # ── Executed notebooks (timestamped copies with cell outputs) ─────────────────
-notebooks/executed/
+notebooks/executed/*
+!notebooks/executed/loo_su001_cca/
+!notebooks/executed/loo_su001_cca/*.ipynb
+!notebooks/executed/loo_su001_scvi/
+!notebooks/executed/loo_su001_scvi/*.ipynb
 # benchmarking: both naming conventions (executed_* prefix and *_executed suffix)
 benchmarking/executed_*.ipynb
 benchmarking/*_executed.ipynb
+benchmarking/benchmark_tcr_ml.ipynb
+
+# Exploration notebooks to keep local only
+notebooks/explore_caushi_gse176021.ipynb
+notebooks/explore_gse176031_pdac.ipynb
+notebooks/explore_yost2019_bcc.ipynb
+
+# Keep only selected example notebooks tracked
+notebooks/examples/cca_02_reference_projection.ipynb
+notebooks/examples/cca_03_clonotype_exhaustion.ipynb
+notebooks/examples/scvi_02_project_query.ipynb
+notebooks/examples/scvi_03_clonotype_exhaustion.ipynb
 
 # ── R / renv ──────────────────────────────────────────────────────────────────
 renv/library/
