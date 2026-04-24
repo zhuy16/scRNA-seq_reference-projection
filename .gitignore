@@ -35,9 +35,9 @@ notebooks/executed/*
 !notebooks/executed/loo_su001_scvi/
 !notebooks/executed/loo_su001_scvi/*.ipynb
 # benchmarking: both naming conventions (executed_* prefix and *_executed suffix)
-benchmarking/executed_*.ipynb
-benchmarking/*_executed.ipynb
-benchmarking/benchmark_tcr_ml.ipynb
+notebooks/benchmarking/executed_*.ipynb
+notebooks/benchmarking/*_executed.ipynb
+notebooks/benchmarking/benchmark_tcr_ml.ipynb
 
 # Exploration notebooks to keep local only
 notebooks/explore_caushi_gse176021.ipynb

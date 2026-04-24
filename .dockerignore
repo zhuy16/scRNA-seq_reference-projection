@@ -10,7 +10,7 @@ models/scanvi_reference/
 
 # ── Executed notebooks (large, contain cell outputs) ─────────────────────────
 notebooks/executed/
-benchmarking/executed_*.ipynb
+notebooks/benchmarking/executed_*.ipynb
 
 # ── R / renv package cache ────────────────────────────────────────────────────
 renv/library/

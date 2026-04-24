@@ -41,7 +41,7 @@ run-scvi:
 
 # ── Run the leave-one-out patient benchmark (CCA + scVI) ─────────────────────
 # Holds out each patient in turn, runs both pipelines, aggregates metrics.
-# Outputs: data/loo/ (gitignored) + benchmarking/loo_*.{png,csv} (committed).
+# Outputs: data/loo/ (gitignored) + notebooks/benchmarking/loo_*.{png,csv} (committed).
 # Estimated runtime: ~4 h for all 11 patients × 2 methods.
 #   make run-loo
 run-loo:

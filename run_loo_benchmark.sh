@@ -8,7 +8,7 @@
 #   3. Extract true/predicted labels into data/loo/fold_<patient>_cca.csv
 #      and data/loo/fold_<patient>_scvi.csv
 #
-# After all folds complete, run benchmarking/benchmark_celltype.ipynb
+# After all folds complete, run notebooks/benchmarking/benchmark_celltype.ipynb
 # (§4 LOO section) to aggregate results across patients.
 #
 # Usage:
@@ -227,9 +227,9 @@ if [[ ${#FAILED_FOLDS[@]} -gt 0 ]]; then
 else
     log "All ${TOTAL} folds succeeded."
     log ""
-    log "Next step: open benchmarking/benchmark_celltype.ipynb and run §4 (LOO section)"
+    log "Next step: open notebooks/benchmarking/benchmark_celltype.ipynb and run §4 (LOO section)"
     log "or run:"
-    log "  conda run -n scrnaseq papermill benchmarking/benchmark_celltype.ipynb \\"
-    log "    benchmarking/benchmark_celltype_executed.ipynb \\"
+    log "  conda run -n scrnaseq papermill notebooks/benchmarking/benchmark_celltype.ipynb \\"
+    log "    notebooks/benchmarking/benchmark_celltype_executed.ipynb \\"
     log "    -k python3 -p loo_dir data/loo"
 fi

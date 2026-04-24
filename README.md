@@ -49,13 +49,10 @@ NB03 has parallel R (Seurat `AddModuleScore`) and Python (scanpy `sc.tl.score_ge
 ├── notebooks/
 │   ├── cca/                   # NB00–03 in R/Seurat
 │   ├── scvi/                  # NB00–03 in Python/scvi-tools
+│   ├── benchmarking/          # benchmark notebooks + LOO summary outputs
 │   ├── 04_tcr_reactivity_selection.ipynb
 │   ├── 05_ppv_validation.ipynb
 │   └── examples/              # selected executed notebooks with outputs (see below)
-│
-├── benchmarking/
-│   ├── benchmark_celltype.ipynb    # CCA vs scVI/scANVI accuracy
-│   └── loo_*.png / loo_*.csv      # LOO results (committed)
 │
 ├── data/exhaustion_gene_panel.txt  # 18-gene panel (→ docs/exhaustion-gene-panel.md)
 ├── environment.yml / renv.lock     # exact Python + R environments
@@ -66,7 +63,7 @@ NB03 has parallel R (Seurat `AddModuleScore`) and Python (scanpy `sc.tl.score_ge
 
 ## Benchmarking: CCA vs scVI/scANVI
 
-Leave-one-out benchmark across 11 patients. Each patient held out as query; remaining 10 as reference. Full results: `benchmarking/loo_summary.csv`, plots: `benchmarking/loo_*.png`.
+Leave-one-out benchmark across 11 patients. Each patient held out as query; remaining 10 as reference. Full results: `notebooks/benchmarking/loo_summary.csv`, plots: `notebooks/benchmarking/loo_*.png`.
 
 | Metric | CCA | scANVI |
 |--------|-----|--------|

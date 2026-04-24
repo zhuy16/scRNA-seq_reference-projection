@@ -73,7 +73,7 @@ notebooks/05_ppv_validation            →  data/{cca,scvi}/ppv_summary.csv
 
 ### NB04 · TCR Reactivity Selection *(placeholder)*
 - **Current implementation:** Random Forest (`class_weight="balanced"`, 5-fold CV) on exhaustion score, clone frequency, CDR3 length, TRBV family, rank score
-- This is one candidate; `benchmarking/benchmark_tcr_ml.ipynb` compares LR, RF, and manual ranking. A definitive method will be selected once labelled training data is available.
+- This is one candidate; `notebooks/benchmarking/benchmark_tcr_ml.ipynb` compares LR, RF, and manual ranking. A definitive method will be selected once labelled training data is available.
 - **Input:** `ranked_clonotypes.csv` from either pipeline  |  **Output:** `selected_tumor_reactive_tcrs.csv`
 
 ### NB05 · PPV Validation *(placeholder)*
