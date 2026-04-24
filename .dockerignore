@@ -1,0 +1,43 @@
+# ── Generated pipeline data ───────────────────────────────────────────────────
+# Mount these as volumes instead of baking them into the image
+data/raw_downloads/
+data/cca/
+data/scvi/
+data/memory_monitor.log
+
+# ── Trained models ────────────────────────────────────────────────────────────
+models/scanvi_reference/
+
+# ── Executed notebooks (large, contain cell outputs) ─────────────────────────
+notebooks/executed/
+benchmarking/executed_*.ipynb
+
+# ── R / renv package cache ────────────────────────────────────────────────────
+renv/library/
+renv/python/
+renv/staging/
+.Rhistory
+.RData
+
+# ── Python cache ──────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.ipynb_checkpoints/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# ── macOS metadata ────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+
+# ── Editor config ─────────────────────────────────────────────────────────────
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# ── Git history (not needed inside the image) ─────────────────────────────────
+.git/

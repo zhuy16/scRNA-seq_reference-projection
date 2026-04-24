@@ -1,0 +1,5 @@
+,accuracy,accuracy,macro_f1,macro_f1,cd8ex_prec,cd8ex_prec,cd8ex_rec,cd8ex_rec,cd8ex_f1,cd8ex_f1
+,mean,std,mean,std,mean,std,mean,std,mean,std
+method,,,,,,,,,,
+CCA,0.8621,0.0477,0.7374,0.0752,0.5182,0.4159,0.5626,0.4288,0.5116,0.4253
+scANVI,0.8594,0.0503,0.7366,0.0431,0.5921,0.2442,0.8834,0.1351,0.6829,0.2093

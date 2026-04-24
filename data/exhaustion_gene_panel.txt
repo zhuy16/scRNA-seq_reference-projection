@@ -1,0 +1,21 @@
+# 18-gene T cell exhaustion panel
+# Source: curated from published TIL exhaustion literature (Wherry et al., 2007; Sade-Feldman et al., 2018; Oliveira et al., 2021)
+# Used for exhaustion scoring in CD8+ T cells
+PDCD1
+HAVCR2
+LAG3
+TIGIT
+CTLA4
+TOX
+NR4A1
+ENTPD1
+CXCL13
+PRDM1
+EOMES
+TBX21
+GZMB
+PRF1
+IFNG
+TNF
+CD38
+VCAM1

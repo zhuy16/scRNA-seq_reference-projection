@@ -1,0 +1,32 @@
+name: scrnaseq
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - jupyter
+  - jupyterlab
+  - papermill
+  - nbformat
+  - ipykernel
+  - r-base=4.4
+  - r-irkernel
+  - pip
+  - pip:
+    # Core data science
+    - scikit-learn
+    - pandas
+    - numpy
+    - matplotlib
+    - seaborn
+    - scipy
+    # Config
+    - pyyaml
+    # Single-cell (scVI pipeline)
+    - scvi-tools>=1.1.0
+    - scanpy>=1.9
+    - anndata>=0.10
+    # R ↔ Python bridge (scVI 00_convert notebook)
+    - rpy2>=3.5
+    # Resource monitoring (monitor_live.py)
+    - psutil
