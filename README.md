@@ -20,21 +20,17 @@ Two projection methods run in parallel and can be compared head-to-head:
 
 ---
 
-## Demo in 5 Minutes
+## Getting Started
 
-Run a minimal end-to-end demo focused on cell type annotation and inspect prepared outputs.
+This is a full analysis pipeline, not a quick toy demo. A complete run (CCA + scVI + LOO benchmarking) typically takes multiple hours (around 4-5 hours on Apple Silicon for all patients).
 
-```bash
-conda env create -f environment.yml && conda activate scrnaseq
-Rscript setup_r_env.R
-conda run -n scrnaseq bash run_cca_pipeline.sh
-```
-
-Then inspect:
+For fastest inspection of outputs, start with the precomputed examples:
 - [notebooks/executed_example_notebooks/benchmark_celltype.ipynb](notebooks/executed_example_notebooks/benchmark_celltype.ipynb)
 - [notebooks/executed_example_notebooks/loo_su001_scvi/02_project_query.ipynb](notebooks/executed_example_notebooks/loo_su001_scvi/02_project_query.ipynb)
 
-Expected outcome: projected query labels and benchmark plots are available for review without extra setup.
+For step-by-step setup and execution details, use:
+- [docs/pipeline-reference.md](docs/pipeline-reference.md)
+- [docs/configuration.md](docs/configuration.md)
 
 ---
 
