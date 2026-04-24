@@ -29,11 +29,13 @@ models/scanvi_reference/
 models/scanvi_reference_su*/
 
 # ── Executed notebooks (timestamped copies with cell outputs) ─────────────────
-notebooks/executed/*
-!notebooks/executed/loo_su001_cca/
-!notebooks/executed/loo_su001_cca/*.ipynb
-!notebooks/executed/loo_su001_scvi/
-!notebooks/executed/loo_su001_scvi/*.ipynb
+notebooks/executed_exmaple_notebooks/*
+!notebooks/executed_exmaple_notebooks/loo_su001_cca/
+!notebooks/executed_exmaple_notebooks/loo_su001_cca/*.ipynb
+!notebooks/executed_exmaple_notebooks/loo_su001_scvi/
+!notebooks/executed_exmaple_notebooks/loo_su001_scvi/*.ipynb
+!notebooks/executed_exmaple_notebooks/benchmark_celltype.ipynb
+!notebooks/executed_exmaple_notebooks/explore_yost2019_bcc.ipynb
 # benchmarking: both naming conventions (executed_* prefix and *_executed suffix)
 notebooks/benchmarking/executed_*.ipynb
 notebooks/benchmarking/*_executed.ipynb
@@ -45,10 +47,10 @@ notebooks/explore_gse176031_pdac.ipynb
 notebooks/explore_yost2019_bcc.ipynb
 
 # Keep only selected example notebooks tracked
-notebooks/examples/cca_02_reference_projection.ipynb
-notebooks/examples/cca_03_clonotype_exhaustion.ipynb
-notebooks/examples/scvi_02_project_query.ipynb
-notebooks/examples/scvi_03_clonotype_exhaustion.ipynb
+notebooks/executed_exmaple_notebooks/cca_02_reference_projection.ipynb
+notebooks/executed_exmaple_notebooks/cca_03_clonotype_exhaustion.ipynb
+notebooks/executed_exmaple_notebooks/scvi_02_project_query.ipynb
+notebooks/executed_exmaple_notebooks/scvi_03_clonotype_exhaustion.ipynb
 
 # ── R / renv ──────────────────────────────────────────────────────────────────
 renv/library/

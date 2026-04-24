@@ -16,7 +16,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-OUT_DIR="notebooks/executed"
+OUT_DIR="notebooks/executed_exmaple_notebooks"
 mkdir -p "$OUT_DIR"
 
 log() { echo "[$(date +%H:%M:%S)] $*"; }

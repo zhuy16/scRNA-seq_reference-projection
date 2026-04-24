@@ -9,7 +9,7 @@ data/memory_monitor.log
 models/scanvi_reference/
 
 # ── Executed notebooks (large, contain cell outputs) ─────────────────────────
-notebooks/executed/
+notebooks/executed_exmaple_notebooks/
 notebooks/benchmarking/executed_*.ipynb
 
 # ── R / renv package cache ────────────────────────────────────────────────────

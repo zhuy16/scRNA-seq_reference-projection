@@ -52,7 +52,7 @@ NB03 has parallel R (Seurat `AddModuleScore`) and Python (scanpy `sc.tl.score_ge
 │   ├── benchmarking/          # benchmark notebooks + LOO summary outputs
 │   ├── 04_tcr_reactivity_selection.ipynb
 │   ├── 05_ppv_validation.ipynb
-│   └── examples/              # selected executed notebooks with outputs (see below)
+│   └── executed_exmaple_notebooks/  # selected executed notebooks with outputs (see below)
 │
 ├── data/exhaustion_gene_panel.txt  # 18-gene panel (→ docs/exhaustion-gene-panel.md)
 ├── environment.yml / renv.lock     # exact Python + R environments
@@ -82,10 +82,10 @@ Selected executed notebooks with full outputs are committed to illustrate code s
 
 | Notebook | What to look for |
 |----------|-----------------|
-| [explore_yost2019_bcc](notebooks/examples/explore_yost2019_bcc.ipynb) | Dataset structure, cell-type composition, TCR overlap overview |
-| [benchmark_celltype](notebooks/examples/benchmark_celltype.ipynb) | CCA vs scANVI accuracy, per-patient LOO results, confusion matrices |
-| [loo_su001_cca/02_reference_projection](notebooks/executed/loo_su001_cca/02_reference_projection.ipynb) | LOO reference projection behavior with held-out patient |
-| [loo_su001_scvi/02_project_query](notebooks/executed/loo_su001_scvi/02_project_query.ipynb) | LOO SCANVI inference on held-out patient |
+| [explore_yost2019_bcc](notebooks/executed_exmaple_notebooks/explore_yost2019_bcc.ipynb) | Dataset structure, cell-type composition, TCR overlap overview |
+| [benchmark_celltype](notebooks/executed_exmaple_notebooks/benchmark_celltype.ipynb) | CCA vs scANVI accuracy, per-patient LOO results, confusion matrices |
+| [loo_su001_cca/02_reference_projection](notebooks/executed_exmaple_notebooks/loo_su001_cca/02_reference_projection.ipynb) | LOO reference projection behavior with held-out patient |
+| [loo_su001_scvi/02_project_query](notebooks/executed_exmaple_notebooks/loo_su001_scvi/02_project_query.ipynb) | LOO SCANVI inference on held-out patient |
 
 ---
 
