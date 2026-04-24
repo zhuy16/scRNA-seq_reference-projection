@@ -1,0 +1,36 @@
+name: Sanity Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Bash syntax check
+        run: |
+          bash -n run_cca_pipeline.sh
+          bash -n run_scvi_pipeline.sh
+          bash -n run_loo_benchmark.sh
+
+      - name: Python syntax check
+        run: |
+          python -m py_compile monitor_live.py
+
+      - name: Validate key repo files
+        run: |
+          test -f README.md
+          test -f environment.yml
+          test -f config/params.yaml
+          test -f notebooks/benchmarking/benchmark_celltype.ipynb
+          test -f notebooks/executed_example_notebooks/benchmark_celltype.ipynb

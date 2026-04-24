@@ -13,7 +13,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG="${SCRIPT_DIR}/config/params.yaml"
 NB_DIR="${SCRIPT_DIR}/notebooks"
-OUT_DIR="${NB_DIR}/executed_exmaple_notebooks"
+OUT_DIR="${NB_DIR}/executed_example_notebooks"
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 
 # Colours

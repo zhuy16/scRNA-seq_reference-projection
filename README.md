@@ -13,6 +13,24 @@ Two projection methods run in parallel and can be compared head-to-head:
 
 ---
 
+## Demo in 5 Minutes
+
+Run a minimal end-to-end demo focused on cell type annotation and inspect prepared outputs.
+
+```bash
+conda env create -f environment.yml && conda activate scrnaseq
+Rscript setup_r_env.R
+conda run -n scrnaseq bash run_cca_pipeline.sh
+```
+
+Then inspect:
+- [notebooks/executed_example_notebooks/benchmark_celltype.ipynb](notebooks/executed_example_notebooks/benchmark_celltype.ipynb)
+- [notebooks/executed_example_notebooks/loo_su001_scvi/02_project_query.ipynb](notebooks/executed_example_notebooks/loo_su001_scvi/02_project_query.ipynb)
+
+Expected outcome: projected query labels and benchmark plots are available for review without extra setup.
+
+---
+
 ## Demo Dataset
 
 **Yost et al. 2019 BCC** ([GSE123813](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE123813), GEO open access) — paired scRNA-seq + TCR-seq from 11 basal cell carcinoma patients (pre/post anti-PD1). Used as a fully reproducible stand-in for clinical TIL data; replace GEO paths in `config/params.yaml` to run on in-house data.
@@ -23,15 +41,19 @@ Two projection methods run in parallel and can be compared head-to-head:
 
 ## Pipeline Overview
 
-```
-Raw GEO data
-    │
-    ├─[CCA]   NB00 acquire → NB01 QC/preprocess → NB02 CCA projection ─┐
-    │                                                                     ├─ NB03 TCR × exhaustion scoring
-    └─[scVI]  NB00 convert → NB01 train SCANVI  → NB02 project query  ─┘
-                                                                          │
-                                                          NB04 TCR selection (placeholder)
-                                                          NB05 PPV validation (placeholder)
+```mermaid
+flowchart TD
+    A[Raw GEO data] --> CCA0[CCA NB00 data acquisition]
+    A --> SCVI0[scVI NB00 convert]
+    CCA0 --> CCA1[CCA NB01 preprocessing]
+    CCA1 --> CCA2[CCA NB02 reference projection]
+    CCA2 --> CCA3[CCA NB03 clonotype x exhaustion]
+    SCVI0 --> SCVI1[scVI NB01 train SCANVI]
+    SCVI1 --> SCVI2[scVI NB02 project query]
+    SCVI2 --> SCVI3[scVI NB03 clonotype x exhaustion]
+    CCA3 --> NB04[NB04 TCR selection placeholder]
+    SCVI3 --> NB04
+    NB04 --> NB05[NB05 PPV validation placeholder]
 ```
 
 NB03 has parallel R (Seurat `AddModuleScore`) and Python (scanpy `sc.tl.score_genes`) implementations — both produce identical output schemas. NB04–05 are placeholder implementations; the optimal ML approach is under benchmarking pending labelled training data. See [docs/pipeline-reference.md](docs/pipeline-reference.md) for per-step details.
@@ -52,7 +74,7 @@ NB03 has parallel R (Seurat `AddModuleScore`) and Python (scanpy `sc.tl.score_ge
 │   ├── benchmarking/          # benchmark notebooks + LOO summary outputs
 │   ├── 04_tcr_reactivity_selection.ipynb
 │   ├── 05_ppv_validation.ipynb
-│   └── executed_exmaple_notebooks/  # selected executed notebooks with outputs (see below)
+│   └── executed_example_notebooks/  # selected executed notebooks with outputs (see below)
 │
 ├── data/exhaustion_gene_panel.txt  # 18-gene panel (→ docs/exhaustion-gene-panel.md)
 ├── environment.yml / renv.lock     # exact Python + R environments
@@ -82,10 +104,10 @@ Selected executed notebooks with full outputs are committed to illustrate code s
 
 | Notebook | What to look for |
 |----------|-----------------|
-| [explore_yost2019_bcc](notebooks/executed_exmaple_notebooks/explore_yost2019_bcc.ipynb) | Dataset structure, cell-type composition, TCR overlap overview |
-| [benchmark_celltype](notebooks/executed_exmaple_notebooks/benchmark_celltype.ipynb) | CCA vs scANVI accuracy, per-patient LOO results, confusion matrices |
-| [loo_su001_cca/02_reference_projection](notebooks/executed_exmaple_notebooks/loo_su001_cca/02_reference_projection.ipynb) | LOO reference projection behavior with held-out patient |
-| [loo_su001_scvi/02_project_query](notebooks/executed_exmaple_notebooks/loo_su001_scvi/02_project_query.ipynb) | LOO SCANVI inference on held-out patient |
+| [explore_yost2019_bcc](notebooks/executed_example_notebooks/explore_yost2019_bcc.ipynb) | Dataset structure, cell-type composition, TCR overlap overview |
+| [benchmark_celltype](notebooks/executed_example_notebooks/benchmark_celltype.ipynb) | CCA vs scANVI accuracy, per-patient LOO results, confusion matrices |
+| [loo_su001_cca/02_reference_projection](notebooks/executed_example_notebooks/loo_su001_cca/02_reference_projection.ipynb) | LOO reference projection behavior with held-out patient |
+| [loo_su001_scvi/02_project_query](notebooks/executed_example_notebooks/loo_su001_scvi/02_project_query.ipynb) | LOO SCANVI inference on held-out patient |
 
 ---
 

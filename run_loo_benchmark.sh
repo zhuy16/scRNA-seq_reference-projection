@@ -74,7 +74,7 @@ MIN_CELLS_PER_CLONOTYPE=$(yaml_val min_cells_per_clonotype)
 N_EXHAUSTED_CLONOTYPES=$(yaml_val n_exhausted_clonotypes)
 
 NB_DIR="${SCRIPT_DIR}/notebooks"
-OUT_DIR="${NB_DIR}/executed_exmaple_notebooks"
+OUT_DIR="${NB_DIR}/executed_example_notebooks"
 mkdir -p "$OUT_DIR"
 
 # ── run_notebook helper (same pattern as run_cca_pipeline.sh) ─────────────────
